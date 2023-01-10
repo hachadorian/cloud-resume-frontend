@@ -1,0 +1,20 @@
+name: deploy static website to s3 bucket
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  DeployHTMLToBucket:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: tyler-hachadorian-cloud-resume
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          SOURCE_DIR: "public"

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Tyler Hachadorian's Cloud Resume</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<script defer>
+    window.onload = async () => {
+        const req = await fetch(
+            process.env.API_URL,
+            {
+                method: "POST",
+            }
+        );
+        const res = await req.json();
+        const { visitor_count } = res.Attributes;
+        document.getElementById("visitor_count").textContent = visitor_count;
+        const loader = document.getElementById("loader");
+        loader.style.display = loader.style.display === ""
+            ? "none"
+            : ""
+    };
+</script>
+
+<style>
+    h1 {
+        color: #4d90f0 !important;
+    }
+
+    #loader {
+        width: 20px;
+        aspect-ratio: 4;
+        --_g: no-repeat radial-gradient(circle closest-side, #fff 90%, #0000);
+        background:
+            var(--_g) 0% 50%,
+            var(--_g) 50% 50%,
+            var(--_g) 100% 50%;
+        background-size: calc(100%/3) 100%;
+        animation: loader-animation 1s infinite linear;
+    }
+
+    @keyframes loader-animation {
+        33% {
+            background-size: calc(100%/3) 0%, calc(100%/3) 100%, calc(100%/3) 100%
+        }
+
+        50% {
+            background-size: calc(100%/3) 100%, calc(100%/3) 0%, calc(100%/3) 100%
+        }
+
+        66% {
+            background-size: calc(100%/3) 100%, calc(100%/3) 100%, calc(100%/3) 0%
+        }
+    }
+</style>
+
+<body>
+    <div class="flex justify-center min-h-screen dark:bg-stone-900 max-w-screen">
+        <div class="prose dark:prose-invert w-4/5 flex flex-col">
+            <div class="flex ml-auto">
+                <div class="mr-2">Visitor Count:</div>
+                <div id="visitor_count"></div>
+                <div id="loader"></div>
+            </div>
+            <h1>Tyler Hachadorian</h1>
+            <div>
+
+            </div>
+            <h1 class="m-0">Education:</h1>
+            <div>Temple University 2016-2021, BS Information Science & Technology</div>
+            <h1 class="mb-0 mt-5">Technical Skills:</h1>
+            <div>
+                <ul class="grid grid-cols-2">
+                    <li>Git</li>
+                    <li>Python</li>
+                    <li>HTML/CSS</li>
+                    <li>Javascript</li>
+                    <li>ReactJS</li>
+                    <li>Gatsby</li>
+                    <li>NextJS</li>
+                    <li>C#</li>
+                    <li>ASP .NET</li>
+                    <li>SQL</li>
+                    <li>Restful Web Services</li>
+                    <li>GraphQL</li>
+                    <li>NodeJS</li>
+                    <li>Apollo GraphQL</li>
+                    <li>AWS</li>
+                </ul>
+            </div>
+            <h1 class="m-0 mt-5">Technical Projects:</h1>
+            <h1 class="my-2">Capstone Project - PHA Cares Tracker</h1>
+            <div>This was my first experience having to work with a client to
+                deliver an end product. It was a great learning experience. I learned a ton
+                about working within a team and client relations. The application was for
+                LNPWI for tracking data surrounding public housing residents. We worked in sprints
+                and had daily scrum meetings where we would rotate scrum master. Along with
+                development we created documentation for the end user and deployed the application
+                on AWS using Elastic Beanstalk and also Amazon's RDS service for the database.</div>
+            <div class="my-2">Frontend: HTML, CSS, Bootstrap</div>
+            <div class="my-2">Backend: ASP .NET, C#</div>
+            <div><a class="hover:underline" href="https://phacarestracker.com/">Live</a></div>
+            <h1>Instagram Clone</h1>
+            <div>This was my final project for a class in server-side development.
+                Designed website using HTML/CSS/Bootstrap; developed a RESTful API for most of
+                the functionality; SOAP API for direct messaging; designed data model/database
+                and implemented stored procedures to prevent SQL injection.</div>
+            <div class="my-2">Frontend: HTML, CSS, Bootstrap</div>
+            <div class="my-2">Backend: ASP .NET, C#</div>
+            <h1 class="text-3xl mb-5">Fullstack Javascript Authentication</h1>
+            <div>Since graduation I have shifted my focus more towards front-end
+                development with Javascript and also learning fullstack Javascript development.
+                This project was apart of a challenge from devChallenges.io. The backend server was created with NodeJS,
+                apollo-server-express and Graphql and the
+                frontend was made with ReactJS and TailwindCSS. I also used redis for session management and Nodemailer
+                for sending emails to users. The backend is deployed on Heroku and for the frontend I used AWS amplify.
+                I also used AWS' s3 service for storing and retrieving profile pictures.</div>
+            <div class="my-2">Frontend: ReactJS, TailwindCSS</div>
+            <div class="my-2">Backend: NodeJS, GraphQL, Redis, Postgres</div>
+            <div><a class="pr-2 hover:underline"
+                    href="https://github.com/hachadorian/authentication-app-frontend">Repo</a><a class="hover:underline"
+                    href="https://master.d24prayglrs9ko.amplifyapp.com">Live</a></div>
+            <h1 class="text-3xl mb-5">Twitch Musicplayer</h1>
+            <div>Project that I have been working on for a short amount of time. It is a music player that was
+                meant to be integrated with Twitch to create a small community where streamers wouldn't have to worry
+                about
+                copyright claims
+                related to playing music on stream. For the login I integrated Twitch's OAuth and for session management
+                I used
+                redis to store a cookie on the server-side. The backend
+                server uses NodeJS, apollo-server-express and GraphQL and the frontend uses ReactJS and TailwindCSS. I
+                also
+                used AWS' Cloudfront to set up a CDN to deliver the mp3 files to play. I think the idea could maybe be
+                useful but if
+                I do end up
+                finishing this project I may integrate soundcloud as cost of Cloudfront
+                and delivering mp3s can become pretty costly.</div>
+            <div class="my-2">Frontend: ReactJS, TailwindCSS</div>
+            <div class="my-2">Backend: NodeJS, GraphQL, Redis, Postgres</div>
+            <div><a class="pr-2 hover:underline" href="https://github.com/hachadorian/music-frontend">Repo</a></div>
+            <h1 class="text-3xl mb-5">IP Tracker</h1>
+            <div>Project apart of a challenge on FrontendMentor.io. The challenge was to create a web application that
+                allows users to search domains or ip addresses and see where exactly they are on a map. For finding the
+                location
+                of ip addresses we had to use geo.ipify.org and for the map we had to use leaflet. I ended up having to
+                also make a
+                backend for the application. I ended up making a small nodejs express server to make requests to the ip
+                api to get
+                around cors. The backend and frontend are both deployed on Heroku.</div>
+            <div class="my-2">Frontend: ReactJS, TailwindCSS</div>
+            <div class="my-2">Backend: NodeJS, Express</div>
+            <div><a class="pr-2 hover:underline" href="https://github.com/hachadorian/iptrkr">Repo</a><a
+                    class="hover:underline" href="https://still-falls-14125.herokuapp.com/">Live</a></div>
+            <h1 class="text-3xl mb-5">Group Chat</h1>
+            <div>Project apart of a challenge on devChallenges.io. The challenge was to create a web application similar
+                to
+                Discord but without voice chat. I developed the backend using apollo-server-express and nodejs. Also
+                integrated AWS'
+                s3 service
+                to store and serve profile pictures. Utilized apollo server subscriptions to display updates to all
+                users.
+                Implemented offset
+                pagination when displaying messages within a channel. The authentication was the same as a prior project
+                so
+                I used
+                Redis
+                to store a server-side cookie for session management. I also was able to get socketio working on
+                localhost
+                to where
+                it showed
+                when a user was typing in a specific channel but had some difficulties with getting socketio to work
+                when
+                deployed
+                on Heroku. Users can create
+                channels, join channels, search for channels, and send and receive messages.</div>
+            <div class="my-2">Frontend: ReactJS, TailwindCSS</div>
+            <div class="my-2">Backend: NodeJS, Express, Apollo, SocketIO</div>
+            <div><a class="pr-2 hover:underline" href="https://github.com/hachadorian/groupchat-frontend">Repo</a><a
+                    class="hover:underline" href="https://stormy-everglades-79283.herokuapp.com/">Live</a>
+            </div>
+</body>
+
+</html>
