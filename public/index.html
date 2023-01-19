@@ -5,23 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-<script defer>
-    window.onload = async () => {
-        const req = await fetch(
-            process.env.API_URL,
-            {
-                method: "POST",
-            }
-        );
-        const res = await req.json();
-        const { visitor_count } = res.Attributes;
-        document.getElementById("visitor_count").textContent = visitor_count;
-        const loader = document.getElementById("loader");
-        loader.style.display = loader.style.display === ""
-            ? "none"
-            : ""
-    };
-</script>
+<script src="./index.js"></script>
 
 <style>
     h1 {
